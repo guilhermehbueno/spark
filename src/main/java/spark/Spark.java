@@ -16,6 +16,8 @@
  */
 package spark;
 
+import java.util.Iterator;
+
 /**
  * The main building block of a Spark application is a set of routes. A route is
  * made up of three simple pieces:
@@ -59,7 +61,19 @@ public final class Spark {
     public static void get(final String path, final Route route) {
         getInstance().get(path, route);
     }
-
+    
+    public static void clearRoutes(){
+    	getInstance().routeMatcher.clearRoutes();
+    }
+    
+    public static void remove(String path){
+    	getInstance().routeMatcher.removeRoute(path);
+    }
+    
+    public static Iterator<String> getRoutePaths(){
+    	return getInstance().routeMatcher.getRoutesPaths();
+    }
+    
     /**
      * Map the route for HTTP POST requests
      *

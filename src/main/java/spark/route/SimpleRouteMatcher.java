@@ -19,8 +19,10 @@ package spark.route;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import spark.routematch.RouteMatch;
 import spark.utils.MimeParse;
@@ -122,6 +124,15 @@ public class SimpleRouteMatcher {
      */
     public void clearRoutes() {
         routes.clear();
+    }
+    
+    public List<RouteEntry> getRoutes(){
+    	return this.routes;
+    }
+    
+    public Iterator<String> getRoutesPaths(){
+    	Iterator<String> iterator = getRoutes().stream().map(RouteEntry::getPath).iterator();
+    	return iterator;
     }
 
     /**

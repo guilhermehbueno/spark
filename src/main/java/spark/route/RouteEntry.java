@@ -97,6 +97,10 @@ class RouteEntry {
             return false;
         }
     }
+    
+    public String getPath() {
+		return path;
+	}
 
     public String toString() {
         return httpMethod.name() + ", " + path + ", " + target;
